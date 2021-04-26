@@ -19,12 +19,12 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jiangmiao/auto-pairs'
 Plug 'ayu-theme/ayu-vim'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd VimEnter * NERDTree | wincmd p
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 filetype indent on
 set ai
 set si
@@ -33,15 +33,17 @@ set shiftwidth=2
 set expandtab
 set number
 syntax on
+set t_Co=256
 set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
-let ayucolor="light"   " for dark version of theme
-colorscheme ayu
-"colorscheme onehalfdark
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
+"colorscheme onedark
 "let g:airline_theme='onehalfdark'
-"set background=light
-"colorscheme PaperColor
+set background=dark
+"colorscheme solarized8
+colorscheme PaperColor
 set showcmd
 set path+=**
 set wildmenu
@@ -89,7 +91,7 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap jk <esc>
+inoremap jj <esc>
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
